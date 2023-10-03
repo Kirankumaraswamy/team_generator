@@ -24,8 +24,14 @@ Before you begin, ensure you have met the following requirements:
    ```
    cd random-team-generator
    ```
-   
-3. Build docker containers:
+3. Create an .env file and copy the contents below. Set your own Postgres user, password and db values.
+   ```
+   POSTGRES_USER=...
+   POSTGRES_PASSWORD=...
+   POSTGRES_DB=...
+   POSTGRES_HOST=sql-db
+   ```
+4. Build docker containers:
    ```
    docker-compose up --build
    ```
