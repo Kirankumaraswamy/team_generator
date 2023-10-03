@@ -1,0 +1,37 @@
+version: '3.4'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+
+    env_file:
+      - .env
+    #volumes:
+    #  - .:/usr/src/app:rw
+    ports:
+      - "8080:8080"
+    depends_on:
+      - sql-db
+    networks:
+      - intranet
+
+  sql-db:
+    image: postgres:13
+    volumes:
+      - sql-data:/var/lib/postgresql/data
+    expose:
+      - "5432"
+    env_file:
+      - .env
+    networks:
+      - intranet
+
+volumes:
+  sql-data:
+
+networks:
+  intranet:
+    driver: bridge
+
+
